@@ -1,3 +1,15 @@
+# Overview
+This repo is to help me learn how to run LLMs.
+
+Each example is in its own folder, with a `README.md` and docker file(s) to build and run the example.
+
+Everything is geared towards running on my personal computer
+- Windows 11 with WSL2
+- AMD 7800X3D cpu
+- 64GB ram
+- Nvidia 2070
+
+
 # Before running
 You need to create a volume called **ai-learning-llm-cache**
 
@@ -17,6 +29,7 @@ greatly reducing the first time it will take apps to start (if the LLM was previ
 > ```
 > docker volume remove ai-learning-llm-cache
 > ```
+
 
 # Running examples
 Most of these examples use `gradio` as a web frontend.
