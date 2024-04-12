@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+
+  app:
+    build:
+      context: .
+      # allow Dockerfile to copy files from shared folder
+      additional_contexts:
+        shared: ../../shared
+    ports: 
+      - 8080:8080
+    restart: on-failure
+    volumes:
+    - ai-learning-llm-cache:/llm_cache
+    deploy:
+      resources:
+        reservations:
+          # allow docker to access gpu
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  # You must manually create this volume before running!
+  ai-learning-llm-cache:
+    external: true
