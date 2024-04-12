@@ -7,19 +7,14 @@ This builds vLLM with CUDA support, so you'll need an Nvidia card to run this.
 1. Run `docker compose build`
 2. Run `docker compose up -d`
 3. Open web page: http://localhost:8080
-4. Enter a question. There's an expandable section to show example queries
+4. Enter a question.
 
 
 # Behavior
-It takes a while for vLLM to load. I'm unsure if it's due to some settings I'm passing in, or if its related to the
-warning that vLLM gives about *awq quantization is not fully optimized yet*, or if it's normal vLLM behavior, or maybe
-it's just the behavior of trying to load these AWQ models.
 
-Once it's loaded, it's giving good responses.
+This seems to be giving pretty good responses, and fairly accurate/
 
-The responses using `TheBloke/Llama-2-7B-Chat-AWQ` seem to be nice and quick to generate, and appear fairly accurate.
-
-My responses seem to get chopped-off if they're large. I increased the `max_new_tokens` value to 512, which
+Sometimes my responses seem to get chopped-off if they're large. I increased the `max_new_tokens` value to 512, which
 helped. I'm not sure how much higher it can go. It's probably part of the model spec. This does increase the amount of 
 time it takes to generate the response, but at least the response doesn't appear truncated.
 
@@ -27,6 +22,10 @@ time it takes to generate the response, but at least the response doesn't appear
 
 * vLLM Docs: https://docs.vllm.ai/en/latest/models/engine_args.html
 * vLLM with LangChain: https://python.langchain.com/docs/integrations/llms/vllm/
+
+Originally it was taking around 8-minutes to load the `TheBloke/Llama-2-7B-Chat-AWQ` model (Mistral loaded faster). 
+To resolve this, I set the `enforce_eager` flag to true. This drastically reduced the amount of time to load, down
+to a few seconds. Evidently this mode can improve performance when the model is loaded.
 
 ## Llama model
 https://huggingface.co/TheBloke/Llama-2-7B-Chat-AWQ

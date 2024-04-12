@@ -37,7 +37,10 @@ llm = VLLM(
     top_k=10,
     top_p=0.95,
     temperature=0.8,
-    vllm_kwargs={"max_model_len": 1000}, # You may need to adjust this to fit on your pc; you'll get an error explaining if you do
+    vllm_kwargs={
+        "max_model_len": 1000, # You may need to adjust this to fit on your pc; you'll get an error explaining if you do
+        "enforce_eager": True, # Disabling this incurs a long load-up time, but will use CUDA graph optimizations and give potentially better performance but uses more GPU memory
+    },
 )
 model_end = time.time()
 print('Model loaded in {:.2f} seconds'.format(model_end - model_start), flush=True)
