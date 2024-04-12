@@ -1,0 +1,8 @@
+python-dotenv==1.0.0
+psutil==2.1.1
+gradio==3.39.0
+transformers==4.31.0
+langchain==0.1.14 
+langchain-community==0.0.31
+einops==0.7.0
+sentencepiece==0.2.0
