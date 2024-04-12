@@ -1,5 +1,5 @@
 # Overview
-Example chatbot using langchain and transformers to load an AWQ quantized model in vLLM.
+Example chatbot using langchain to load an AWQ quantized model in vLLM.
 
 This builds vLLM with CUDA support, so you'll need an Nvidia card to run this.
 
